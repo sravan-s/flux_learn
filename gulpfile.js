@@ -6,7 +6,7 @@ gulp.task('compile', () => {
 	return gulp.src('src/js/**/*.js')
         .pipe(concat('app.js'))
         .pipe(babel({
-            presets: ['es2015']
+            presets: ['es2015', 'react']
         }))
         .pipe(gulp.dest('build/js'));
 });
