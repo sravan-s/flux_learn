@@ -1,0 +1,21 @@
+{
+  "name": "rawflux",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "sravan <sravan@qburst.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^0.14.7"
+  }
+}
