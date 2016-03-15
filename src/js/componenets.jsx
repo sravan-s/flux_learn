@@ -6,7 +6,7 @@ var FormElementWithLabel = React.createClass({
         return (
             <div className="form-element">
                 <label htmlFor={this.props.id}>{this.props.labelText}< /label>
-                <input type={this.props.inputType} id={this.props.id}/>
+                <input type={this.props.inputType} id={this.props.id} required="required"/>
             </div>
         );
     }
@@ -16,7 +16,6 @@ var FormBtn = React.createClass({
     render: function() {
         return (
             <button
-                type="button"
                 data-btntype={this.props.btntype}>
                 {this.props.text}
             </button>
@@ -32,6 +31,7 @@ var ReactForm = React.createClass({
         }
     },
     handleClick: function(event) {
+        event.preventDefault();
         var values;
         if($(event.target).data('btntype') == 'signup') {
             console.log('go to signup');

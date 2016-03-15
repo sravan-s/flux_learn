@@ -14,5 +14,10 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0"
+  },
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
   }
 }
