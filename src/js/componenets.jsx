@@ -1,21 +1,23 @@
 var FormElementWithLabel = React.createClass({
+    getVal: function() {
+        return $(ReactDOM.findDOMNode(this)).find('input')[0].value;
+    },
     render: function() {
         return (
             <div className="form-element">
                 <label htmlFor={this.props.id}>{this.props.labelText}< /label>
-                <input type={this.props.inputType} id={this.props.id} />
+                <input type={this.props.inputType} id={this.props.id}/>
             </div>
         );
     }
 });
 
 var FormBtn = React.createClass({
-    clickHandler: function() {
-        console.log('clked');
-    },
     render: function() {
         return (
-            <button type="button" onClick={this.clickHandler}>
+            <button
+                type="button"
+                data-btntype={this.props.btntype}>
                 {this.props.text}
             </button>
         );
@@ -23,15 +25,34 @@ var FormBtn = React.createClass({
 });
 
 var ReactForm = React.createClass({
-    login: function() {
-        console.log('hi');
+    getValues: function() {
+        return {
+            uname: this.refs.uname.getVal(),
+            pwd: this.refs.pwd.getVal()
+        }
     },
-    gotoSignup: function() {
-        console.log('this.refs');
+    handleClick: function(event) {
+        var values;
+        if($(event.target).data('btntype') == 'signup') {
+            console.log('go to signup');
+        } else if($(event.target).data('btntype') == 'login') {
+            values = this.getValues();
+            if(!!values.uname && !!values.pwd) {
+                $.ajax({
+                    type: "POST",
+                    url: 'http://www.google.com',
+                    data: values,
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            }
+        }
     },
     render: function() {
         return(
-            <form>
+            <form
+                onClick={this.handleClick}>
                 <FormElementWithLabel
                     id="username"
                     ref="uname"
@@ -42,12 +63,14 @@ var ReactForm = React.createClass({
                     ref="pwd"
                     labelText="Password"
                     inputType="Password"/>
-                <FormBtn 
+                <FormBtn
                     text="SignUp"
-                    onClick={this.gotoSignup}/>
+                    btntype="signup"
+                    ref="signupBtn"/>
                 <FormBtn
                     text="Login"
-                    onClick={this.login}/>
+                    btntype="login"
+                    ref="loginBtn"/>
             </form>
         );
     }
