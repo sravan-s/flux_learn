@@ -10,13 +10,21 @@ gulp.task('buildLib', () => {
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('assets/js'));
 });
+
 gulp.task('compile', () => {
-	return gulp.src(['src/js/componenets.jsx', 'src/js/app.jsx'])
+    var modules = [
+        'login',
+        'signup',
+        'chat'
+    ];
+    modules.forEach(function(module) {
+        gulp.src(['src/js/' + module + '/componenets.jsx', 'src/js/' + module + '/app.jsx'])
         .pipe(concat('app.js'))
         .pipe(babel({
             presets: ['es2015', 'react']
         }))
-        .pipe(gulp.dest('assets/js'));
+        .pipe(gulp.dest('assets/js/' + module ));
+    });
 });
 
 gulp.task('default', ['buildLib', 'compile']);
