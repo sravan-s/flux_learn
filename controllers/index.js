@@ -5,6 +5,7 @@ var express = require('express'),
     Chat = require('../models/chat'),
     config = require('../models/config'),
     cookieParser = require('cookie-parser'),
+    io = require('../socket');
     jwt = require('jsonwebtoken');
 
 router.use(cookieParser());
@@ -101,6 +102,22 @@ router.post('/addChat', function(req, res) {
                 res.send({
                     success: true
                 });
+                Chat
+                    .find()
+                    .sort('-date')
+                    .limit(1)
+                    .exec(function(err, post) {
+                        if(!err) {
+                            io.emit('newMsg', {
+                                success: true,
+                                data: {
+                                    user: post[0].user,
+                                    date: post[0].date,
+                                    text: post[0].text
+                                }
+                            });
+                        }
+                    });
             }
         });
     });

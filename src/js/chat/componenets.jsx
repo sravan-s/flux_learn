@@ -20,12 +20,31 @@ var ChatList = React.createClass({
             chats: []
         };
     },
+    componentDidMount: function() {
+        var baseUrl = window.location.hostname + ":3001",
+            socket = io.connect(baseUrl);
+        socket.on('newMsg', function(response) {
+            console.log(response);
+            if(response.success == true) {
+                this.state.chats.push(response.data);
+                this.forceUpdate();
+            }
+        }.bind(this));
+    },
     render: function() {
         return (
             <ul className="chat-holder">
                 {
                     this.state.chats.map(function(chat) {
-                        return <li className="chat-item">{chat.text}</li>
+                        return (
+                            <li className="chat-item">
+                                <span className="user">
+                                    {chat.user}
+                                </span>
+                                <span className="chat-text">
+                                    {chat.text}
+                                </span>
+                            </li>);
                     })
                 }
             </ul>
