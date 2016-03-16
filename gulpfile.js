@@ -11,13 +11,14 @@ gulp.task('buildLib', () => {
         .pipe(gulp.dest('assets/js'));
 });
 
-gulp.task('compile', () => {
+gulp.task('compilejsx', () => {
     var modules = [
+        'common',
         'login',
         'signup',
         'chat'
     ];
-    modules.forEach(function(module) {
+    modules.forEach((module) => {
         gulp.src(['src/js/' + module + '/componenets.jsx', 'src/js/' + module + '/app.jsx'])
         .pipe(concat('app.js'))
         .pipe(babel({
@@ -27,4 +28,4 @@ gulp.task('compile', () => {
     });
 });
 
-gulp.task('default', ['buildLib', 'compile']);
+gulp.task('default', ['buildLib', 'compilejsx']);

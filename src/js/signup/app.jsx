@@ -1,1 +1,4 @@
-console.log('signup page');
+ReactDOM.render(
+    <SignupForm />,
+    document.getElementById('main')
+);

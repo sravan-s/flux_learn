@@ -1,4 +1,4 @@
 ReactDOM.render(
-    <ReactForm />,
+    <LoginForm />,
     document.getElementById('main')
 );

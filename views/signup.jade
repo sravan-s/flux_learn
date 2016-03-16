@@ -1,11 +1,11 @@
 doctype html
 html(lang="en")
     head
-        meta(charset="UTF-8")
-        title React/Flux
-        script(src="assets/js/lib.js")
+        include ./common/headElements.jade
+        title Signup
     body
         header
             h1 Signup
+            a(href='/login') Goto Login
         #main
         script(src="assets/js/signup/app.js")
