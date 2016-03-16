@@ -1,4 +1,4 @@
-var db = require('config');
+var db = require('./config');
 
 module.exports = db.model('Chat', {
     user: String,

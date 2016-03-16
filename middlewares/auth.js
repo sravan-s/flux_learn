@@ -7,7 +7,7 @@ var express = require('express'),
 router.use(cookieParser());
 router.use(function (req, res, next) {
     var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies.token;
-    if(req.url == '/chat') {
+    if(req.url == '/chat' || req.url == '/addChat' || req.url == '/getChat') {
         if (token) {
             jwt.verify(token, config.secretKey, function (err, decoded) {
                 if (err) {

@@ -1,1 +1,4 @@
-console.log('chat page');
+ReactDOM.render(
+    <ChatRoom />,
+    document.getElementById('main')
+);
