@@ -6,7 +6,8 @@ gulp.task('buildLib', () => {
 	return gulp.src([
             'bower_components/jquery/dist/jquery.js',
             'bower_components/react/react.js',
-            'bower_components/react/react-dom.js'])
+            'bower_components/react/react-dom.js',
+            'bower_components/socket.io-client/socket.io.js'])
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('assets/js'));
 });

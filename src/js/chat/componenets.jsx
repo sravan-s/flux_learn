@@ -1,20 +1,33 @@
 console.log("Chat Components");
 
 var ChatList = React.createClass({
-    handleClick: function() {
+    getChats: function() {
         var count = 0;
         $.ajax({
             type: "GET",
             url: '/getChat?page='+count,
             success: function(response) {
                 console.log(response);
-            }
+                this.setState({
+                    chats: response.data
+                });
+            }.bind(this)
         });
+    },
+    getInitialState: function() {
+        this.getChats();
+        return {
+            chats: []
+        };
     },
     render: function() {
         return (
-            <ul onClick={this.handleClick}>
-                <li>Item1</li>
+            <ul className="chat-holder">
+                {
+                    this.state.chats.map(function(chat) {
+                        return <li className="chat-item">{chat.text}</li>
+                    })
+                }
             </ul>
         );
     }
@@ -26,9 +39,9 @@ var ChatInput = React.createClass({
     },
     render: function() {
         return (
-            <div>
+            <div class="chat-submit">
                 <input type ="text" />
-                <button id="sbmitBtn">Submitt</button>
+                <button id="sbmitBtn">Submit</button>
             </div>
         );
     }
@@ -59,9 +72,10 @@ var ChatRoom = React.createClass({
     },
     render: function() {
         return (
-            <div 
+            <div
+                className="chat-room"
                 onClick={this.sentChat}>
-                <div>
+                <div className="chatlist-wrap">
                     <ChatList/>
                 </div>
                 <ChatInput
