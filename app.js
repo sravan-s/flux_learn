@@ -1,7 +1,12 @@
 var express = require('express'),
-    app = express();
+    app = express(),
+    bodyParser = require('body-parser');
 
 app.set('view engine', 'jade');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.use(require('./middlewares'));
 app.use(require('./controllers'));

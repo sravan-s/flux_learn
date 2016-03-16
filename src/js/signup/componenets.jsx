@@ -2,21 +2,25 @@ var SignupForm = React.createClass({
     getValues: function() {
         return {
             uname: this.refs.uname.getVal(),
-            pwd: this.refs.pwd.getVal()
+            pwd: this.refs.pwd.getVal(),
+            repwd: this.refs.repwd.getVal()
         }
     },
     handleClick: function(event) {
         event.preventDefault();
         var values;
         if($(event.target).data('btntype') == 'signup') {
-            console.log('go to signup');
-        } else if($(event.target).data('btntype') == 'login') {
             values = this.getValues();
-            if(!!values.uname && !!values.pwd) {
+            if(!!values.uname && !!values.pwd && !!values.repwd) {
                 $.ajax({
                     type: "POST",
-                    url: 'http://www.google.com',
+                    url: '/addUser',
                     data: values,
+/*
+                    headers: {
+                        'Content-Type':'application/json'
+                    },
+*/
                     success: function(response) {
                         console.log(response);
                     }
