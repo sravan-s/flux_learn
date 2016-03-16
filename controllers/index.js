@@ -1,7 +1,9 @@
 var express = require('express'),
     router = express.Router(),
     uuid = require('node-uuid'),
-    User = require('../models/user');
+    User = require('../models/user'),
+    config = require('../models/config'),
+    jwt = require('jsonwebtoken');
 
 router.get('/:var(login)?', function (req, res) {
     res.render('login', {});
@@ -28,7 +30,7 @@ router.post('/addUser', function (req, res) {
                 });
             }
         });
-    } catch(err){
+    } catch (err) {
         console.log(err);
         res.send({
             success: false
@@ -41,20 +43,22 @@ router.post('/auth', function (req, res) {
         pwd: req.body.pwd
     };
     try {
-        User.findOne(uinfo, function(err, resp) {
-            if(err) {
+        User.findOne(uinfo, function (err, resp) {
+            if (err) {
                 res.send({
                     success: false
                 })
             } else {
-                
+                var token = jwt.sign(resp.uid, config.secretKey, {
+                    expiresIn: 60*60*60 // expires in 24 hours
+                });
                 res.send({
-                    session: res.session,
-                    success: true
+                    success: true,
+                    token: token
                 });
             }
         });
-    } catch(err){
+    } catch (err) {
         console.log(err);
         res.send({
             success: false

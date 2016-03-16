@@ -5,4 +5,6 @@ mongoose.connect(url, function () {
     console.log('mongodb connected');
 });
 
+mongoose.secretKey = "essess";
+
 module.exports = mongoose;
