@@ -30,6 +30,35 @@ router.post('/addUser', function (req, res) {
         });
     } catch(err){
         console.log(err);
+        res.send({
+            success: false
+        });
+    }
+});
+router.post('/auth', function (req, res) {
+    var uinfo = {
+        uname: req.body.uname,
+        pwd: req.body.pwd
+    };
+    try {
+        User.findOne(uinfo, function(err, resp) {
+            if(err) {
+                res.send({
+                    success: false
+                })
+            } else {
+                
+                res.send({
+                    session: res.session,
+                    success: true
+                });
+            }
+        });
+    } catch(err){
+        console.log(err);
+        res.send({
+            success: false
+        });
     }
 });
 

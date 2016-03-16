@@ -15,7 +15,7 @@ var LoginForm = React.createClass({
             if(!!values.uname && !!values.pwd) {
                 $.ajax({
                     type: "POST",
-                    url: 'http://www.google.com',
+                    url: '/auth',
                     data: values,
                     success: function(response) {
                         console.log(response);

@@ -5,7 +5,7 @@ module.exports = db.model('User', {
     pwd: String,
     uid: {
         type: String,
-        default: timestamp
+        default: (new Date()).getTime()
     },
     joined: {
         type: Date,
