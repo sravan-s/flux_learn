@@ -39,7 +39,7 @@ var ChatInput = React.createClass({
     },
     render: function() {
         return (
-            <div class="chat-submit">
+            <div className="chat-submit">
                 <input type ="text" />
                 <button id="sbmitBtn">Submit</button>
             </div>
