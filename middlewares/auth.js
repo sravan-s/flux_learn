@@ -1,10 +1,12 @@
 var express = require('express'),
     router = express.Router(),
     jwt = require('jsonwebtoken'),
-    config = require('../models/config');
+    config = require('../models/config'),
+    cookieParser = require('cookie-parser');
 
+router.use(cookieParser());
 router.use(function (req, res, next) {
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies.token;
     if(req.url == '/chat') {
         if (token) {
             jwt.verify(token, config.secretKey, function (err, decoded) {

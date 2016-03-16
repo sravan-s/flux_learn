@@ -18,7 +18,10 @@ var LoginForm = React.createClass({
                     url: '/auth',
                     data: values,
                     success: function(response) {
-                        console.log(response);
+                        if(response.success == true) {
+                            document.cookie = "token=" + response.token;
+                            window.location = '/chat';
+                        }
                     }
                 });
             }

@@ -44,13 +44,18 @@ router.post('/auth', function (req, res) {
     };
     try {
         User.findOne(uinfo, function (err, resp) {
-            if (err) {
+            if(!resp) {
+                resp = {
+                    length: -1
+                };
+            }
+            if (err || resp.length == -1) {
                 res.send({
                     success: false
                 })
             } else {
                 var token = jwt.sign(resp.uid, config.secretKey, {
-                    expiresIn: 60*60*60 // expires in 24 hours
+                    expiresIn: 36000
                 });
                 res.send({
                     success: true,
