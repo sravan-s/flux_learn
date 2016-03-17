@@ -9,9 +9,29 @@ body {
     height: 100vh;
 }
 
+a {
+    color: auto;
+    text-decoration: none;
+    &:focus, &:active {
+        color: auto;
+        text-decoration: none;
+    }
+}
+
 .page-header {
     background-color: $background;
     height: 10%;
+    padding-left: 10%;
+    position: relative;
+    h1 {
+        line-height: 55px;
+    }
+    a {
+        color: $secondary;
+        position: absolute;
+        right: 11px;
+        top: 20px;
+    }
 }
 
 #main {
@@ -25,6 +45,81 @@ body {
         display: flex;
         flex-direction: column;
         height: 300px;
-        width: 80%;
+        width: 550px;
+        .btn-wrap {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            width: 100%;
+        }
     }
+}
+
+.chat-room {
+    height: 80vh;
+    width: 100%;
+    .chatlist-wrap {
+        height: calc(100% - 50px);
+        overflow-y: auto;
+        .chat-holder {
+            height: calc(100% - 50px);
+            padding-left: 0px;
+        }
+        .chat-item {
+            background-color: $primary;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 50px;
+            padding: 8px 7px;
+            .user {
+                align-items: center;
+                background: red;
+                border-radius: 50px;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 50px;
+            }
+            .chat-text {
+                background-color: red;
+                display: inline-block;
+                width: calc(95% - 50px);
+                word-wrap: break-word;
+            }
+        }
+    }
+    .chat-submit {
+        height: 50px;
+        margin-top: 20px;
+        text-align: right;
+        input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid $primary;
+            color: $primary;
+            height: 30px;
+            width: 65%;
+            &:focus {
+                outline: none;
+            }
+        }
+        button {
+            @extend %btn;
+            display: inline-block;
+            margin-left: 10px;
+        }
+    }
+}
+
+#account {
+    position: absolute;
+    right: 11px;
+    top: 20px;
+    p {
+        display: inline;
+    }    
 }

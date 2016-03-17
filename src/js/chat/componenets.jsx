@@ -121,7 +121,7 @@ var Logout = React.createClass({
         return (
             <div>
                 <p>
-                    Hello
+                    Hello,
                     <span className="uname">
                         {this.state.uname}
                     </span>
@@ -129,7 +129,7 @@ var Logout = React.createClass({
                 <a
                     href="#"
                     onClick={this.logout}>
-                    "Logout"
+                    Logout
                 </a>
             </div>
         );

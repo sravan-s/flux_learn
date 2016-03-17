@@ -50,10 +50,13 @@ var SignupForm = React.createClass({
                     ref="repwd"
                     labelText="Repeat Password"
                     inputType="Password"/>
-                <FormBtn
-                    text="SignUp"
-                    btntype="signup"
-                    ref="signupBtn"/>
+                <div
+                    className="btn-wrap">
+                    <FormBtn
+                        text="SignUp"
+                        btntype="signup"
+                        ref="signupBtn"/>
+                </div>
             </form>
         );
     }
