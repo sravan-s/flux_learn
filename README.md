@@ -1,13 +1,13 @@
 # flux_learn
 On the go learning flux
 
-Requirements
+## Requirements
   * Nodejs
   * NPM
   * Gulp
   * Bower
   
-Steps:
+## Steps:
   * Clone the repo
   * npm install
   * bower install
