@@ -7,7 +7,6 @@ var ChatList = React.createClass({
             type: "GET",
             url: '/getChat?page='+count,
             success: function(response) {
-                console.log(response);
                 this.setState({
                     chats: response.data
                 });
@@ -24,7 +23,6 @@ var ChatList = React.createClass({
         var baseUrl = window.location.hostname + ":3001",
             socket = io.connect(baseUrl);
         socket.on('newMsg', function(response) {
-            console.log(response);
             if(response.success == true) {
                 this.state.chats.push(response.data);
                 this.forceUpdate();
@@ -44,7 +42,8 @@ var ChatList = React.createClass({
                                 <span className="chat-text">
                                     {chat.text}
                                 </span>
-                            </li>);
+                            </li>
+                        );
                     })
                 }
             </ul>
@@ -100,5 +99,36 @@ var ChatRoom = React.createClass({
                 <ChatInput
                     ref="chatInput"/>
             </div>);
+    }
+});
+
+var Logout = React.createClass({
+    getInitialState: function () {
+        var decodedId = atob(getPayload(getCook("token"))),
+            userName;
+        decodedId = JSON.parse("{" + decodedId.match(/[^{}]+(?=\})/g) + "}");
+        if(!!decodedId) {
+            userName = decodedId.user;
+        }
+        return {
+            uname: userName
+        };
+    },
+    render: function() {
+        return (
+            <div>
+                <p>
+                    Hello
+                    <span className="uname">
+                        {this.state.uname}
+                    </span>
+                </p>
+                <a
+                    href="#"
+                    onClick={this.logout}>
+                    "Logout"
+                </a>
+            </div>
+        );
     }
 });

@@ -16,13 +16,12 @@ var SignupForm = React.createClass({
                     type: "POST",
                     url: '/addUser',
                     data: values,
-/*
-                    headers: {
-                        'Content-Type':'application/json'
-                    },
-*/
                     success: function(response) {
-                        console.log(response);
+                        if(response.success == true) {
+                            //Go tologin sucess
+                        } else {
+                            //show msg
+                        }
                     }
                 });
             }
