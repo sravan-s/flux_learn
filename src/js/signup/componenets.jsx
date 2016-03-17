@@ -18,9 +18,10 @@ var SignupForm = React.createClass({
                     data: values,
                     success: function(response) {
                         if(response.success == true) {
-                            //Go tologin sucess
+                            alert("Signup successful, please login");
+                            window.location = "\login";
                         } else {
-                            //show msg
+                            alert(response.message);
                         }
                     }
                 });

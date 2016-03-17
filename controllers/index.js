@@ -30,21 +30,33 @@ router.post('/addUser', function (req, res) {
     req.body.uid = uuid.v4();
     var currentUser = new User(req.body);
     try {
-        currentUser.save(function (err) {
-            if (err) {
+        User.findOne({uname: req.body.uname}, function(err, data) {
+            if(!!data) {
                 res.send({
-                    success: false
+                    success: false,
+                    message: "User Already exist"
                 });
             } else {
-                res.send({
-                    success: true
+                currentUser.save(function(err) {
+                    if(err) {
+                        res.send({
+                            success: false,
+                            message: "Couldn't add user"
+                        });
+                    } else {
+                        res.send({
+                            success: true
+                        });
+                    }
                 });
             }
         });
     } catch (err) {
+        console.log('catch');
         console.log(err);
         res.send({
-            success: false
+            success: false,
+            message: "Db Exception"
         });
     }
 });

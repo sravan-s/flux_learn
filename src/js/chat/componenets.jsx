@@ -114,6 +114,9 @@ var Logout = React.createClass({
             uname: userName
         };
     },
+    logout: function() {
+        authModule.logout();
+    },
     render: function() {
         return (
             <div>
