@@ -2,16 +2,16 @@
 On the go learning flux
 
 Requirements
-  Nodejs
-  NPM
-  Gulp
-  Bower
+  * Nodejs
+  * NPM
+  * Gulp
+  * Bower
   
 Steps:
-  Clone the repo
-  npm install
-  bower install
-  gulp
+  * Clone the repo
+  * npm install
+  * bower install
+  * gulp
   
-  node app.js
+* node app.js
 
