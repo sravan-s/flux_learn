@@ -21,6 +21,8 @@ var LoginForm = React.createClass({
                         if(response.success == true) {
                             document.cookie = "token=" + response.token;
                             window.location = '/chat';
+                        } else {
+                            alert(response.message);
                         }
                     }
                 });
@@ -42,13 +44,13 @@ var LoginForm = React.createClass({
                     labelText="Password"
                     inputType="Password"/>
                 <FormBtn
-                    text="SignUp"
-                    btntype="signup"
-                    ref="signupBtn"/>
-                <FormBtn
                     text="Login"
                     btntype="login"
                     ref="loginBtn"/>
+                <FormBtn
+                    text="SignUp"
+                    btntype="signup"
+                    ref="signupBtn"/>
             </form>
         );
     }

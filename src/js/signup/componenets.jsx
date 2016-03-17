@@ -11,7 +11,7 @@ var SignupForm = React.createClass({
         var values;
         if($(event.target).data('btntype') == 'signup') {
             values = this.getValues();
-            if(!!values.uname && !!values.pwd && !!values.repwd) {
+            if(!!values.uname && !!values.pwd && !!values.repwd && (values.pwd == values.repwd)) {
                 $.ajax({
                     type: "POST",
                     url: '/addUser',
@@ -25,6 +25,8 @@ var SignupForm = React.createClass({
                         }
                     }
                 });
+            } else if(values.pwd != values.repwd) {
+                alert("Passwords dont match");
             }
         }
     },

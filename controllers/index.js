@@ -74,7 +74,8 @@ router.post('/auth', function (req, res) {
             }
             if (err || resp.length == -1) {
                 res.send({
-                    success: false
+                    success: false,
+                    message: "Cannot login, please verify your username and password"
                 })
             } else {
                 var session = {
