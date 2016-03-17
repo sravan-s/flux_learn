@@ -104,7 +104,7 @@ var ChatRoom = React.createClass({
 
 var Logout = React.createClass({
     getInitialState: function () {
-        var decodedId = atob(getPayload(getCook("token"))),
+        var decodedId = atob(base64Module.getPayload(base64Module.getCook("token"))),
             userName;
         decodedId = JSON.parse("{" + decodedId.match(/[^{}]+(?=\})/g) + "}");
         if(!!decodedId) {
