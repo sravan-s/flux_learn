@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
+const sass = require('gulp-sass');
 
 gulp.task('buildLib', () => {
 	return gulp.src([
@@ -21,12 +22,18 @@ gulp.task('compilejsx', () => {
     ];
     modules.forEach((module) => {
         gulp.src(['src/js/' + module + '/componenets.jsx', 'src/js/' + module + '/app.jsx'])
-        .pipe(concat('app.js'))
-        .pipe(babel({
-            presets: ['es2015', 'react']
-        }))
-        .pipe(gulp.dest('assets/js/' + module ));
+            .pipe(concat('app.js'))
+            .pipe(babel({
+                presets: ['es2015', 'react']
+            }))
+            .pipe(gulp.dest('assets/js/' + module ));
     });
 });
 
-gulp.task('default', ['buildLib', 'compilejsx']);
+gulp.task('buildSASS', () => {
+    return gulp.src('src/styles/main.scss')
+            .pipe(sass())
+            .pipe(gulp.dest('assets/css/'));
+});
+
+gulp.task('default', ['buildLib', 'buildSASS', 'compilejsx']);

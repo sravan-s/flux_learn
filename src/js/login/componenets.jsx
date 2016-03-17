@@ -32,7 +32,8 @@ var LoginForm = React.createClass({
     render: function() {
         return(
             <form
-                onClick={this.handleClick}>
+                onClick={this.handleClick}
+                className="auth-box form">
                 <FormElementWithLabel
                     id="username"
                     ref="uname"
@@ -43,14 +44,17 @@ var LoginForm = React.createClass({
                     ref="pwd"
                     labelText="Password"
                     inputType="Password"/>
-                <FormBtn
-                    text="Login"
-                    btntype="login"
-                    ref="loginBtn"/>
-                <FormBtn
-                    text="SignUp"
-                    btntype="signup"
-                    ref="signupBtn"/>
+                <div
+                    className="btn-wrap">
+                    <FormBtn
+                        text="Login"
+                        btntype="login"
+                        ref="loginBtn"/>
+                    <FormBtn
+                        text="SignUp"
+                        btntype="signup"
+                        ref="signupBtn"/>
+                </div>
             </form>
         );
     }

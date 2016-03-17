@@ -1,0 +1,18 @@
+//Colors
+
+$purple: #46485c;
+$darkPurple: #262731;
+$lightPurple: #B2B4D0;
+$white: #FFF;
+$green: #B5CD60;
+
+$primary: $lightPurple;
+$secondary: $darkPurple;
+$background: $purple;
+$elemText: $white;
+$elemBg: $green;
+
+//Fonts
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700,300);
+$mainFont: 'Oswald';

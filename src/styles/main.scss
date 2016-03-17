@@ -1,0 +1,30 @@
+@import 'components/config';
+@import 'components/buttons';
+@import 'components/form';
+
+body {
+    background-color: $secondary;
+    color: $secondary;
+    font-family: $mainFont;
+    height: 100vh;
+}
+
+.page-header {
+    background-color: $background;
+    height: 10%;
+}
+
+#main {
+    align-items: center;
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    .auth-box {
+        align-items: center;
+        background-color: $background;
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        width: 80%;
+    }
+}

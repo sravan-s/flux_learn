@@ -33,6 +33,7 @@ var SignupForm = React.createClass({
     render: function() {
         return(
             <form
+                className="auth-box form"
                 onClick={this.handleClick}>
                 <FormElementWithLabel
                     id="username"
