@@ -36,11 +36,13 @@ var ChatList = React.createClass({
                     this.state.chats.map(function(chat) {
                         return (
                             <li className="chat-item">
-                                <span className="user">
+                                <span className="user" title={chat.user}>
                                     {chat.user}
                                 </span>
                                 <span className="chat-text">
-                                    {chat.text}
+                                    <span>
+                                        {chat.text}
+                                    </span>
                                 </span>
                             </li>
                         );

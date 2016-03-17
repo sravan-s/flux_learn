@@ -74,7 +74,7 @@ a {
             padding: 8px 7px;
             .user {
                 align-items: center;
-                background: red;
+                background: $background;
                 border-radius: 50px;
                 display: flex;
                 height: 50px;
@@ -85,10 +85,14 @@ a {
                 width: 50px;
             }
             .chat-text {
-                background-color: red;
+                background-color: $background;
                 display: inline-block;
+                padding-top: 10px;
                 width: calc(95% - 50px);
                 word-wrap: break-word;
+                span {
+                    margin-left: 10px;
+                }
             }
         }
     }
