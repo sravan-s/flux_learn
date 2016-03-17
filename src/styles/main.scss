@@ -71,6 +71,7 @@ a {
             flex-direction: row;
             justify-content: space-between;
             height: 50px;
+            margin: 5px;
             padding: 8px 7px;
             .user {
                 align-items: center;
@@ -82,13 +83,14 @@ a {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
-                width: 50px;
+                width: 20%;
             }
             .chat-text {
                 background-color: $background;
+                border-right: 50px;
                 display: inline-block;
                 padding-top: 10px;
-                width: calc(95% - 50px);
+                width: 77%;
                 word-wrap: break-word;
                 span {
                     margin-left: 10px;

@@ -139,7 +139,7 @@ router.get('/getChat', function(req, res) {
     var chats = new Chat();
     Chat
         .find()
-        .sort('-date')
+        .sort('date')
         .limit(10)
         .exec(function(err, posts) {
             var temp = {},
