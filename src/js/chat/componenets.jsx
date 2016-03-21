@@ -25,7 +25,8 @@ var ChatList = React.createClass({
         socket.on('newMsg', function(response) {
             if(response.success == true) {
                 this.state.chats.push(response.data);
-                this.forceUpdate();
+/*                this.forceUpdate();*/
+                this.setState();
             }
         }.bind(this));
     },
