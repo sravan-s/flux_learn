@@ -1,5 +1,12 @@
-# flux_learn
-On the go learning flux
+# Simple Chat
+On the go learning various JS technologies.
+
+##Technologies/Libraries Used:
+ * Node
+ * Express
+ * Mongoose
+ * ReactJs
+ * Socket.io
 
 ## Requirements
   * Nodejs
